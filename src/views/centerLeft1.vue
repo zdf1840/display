@@ -1,12 +1,53 @@
 <template>
   <div id="centreLeft1">
     <div class="d-flex">
-      <div class="text-num" style="margin: 50px 0 0 18px;">
-        <ul>
-          <li>80.00%</li>
-          <li>80.00%</li>
-        </ul>
-      </div>
+      <form>
+        <el-row>
+          <el-col :span="24" class="text-num" style="margin: 50px 0 0 12px;">
+            <ul>
+              <li>80.00%</li>
+              <li>80.00%</li>
+            </ul>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="12" class="text-str">
+            G1 压气机效率
+          </el-col>
+          <el-col :span="12" class="text-str">
+            G1 压气机效率
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24" class="text-num" style="margin: 5px 0 0 12px;">
+            <ul>
+              <li>80.00%</li>
+              <li>80.00%</li>
+            </ul>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="12" class="text-str">
+            G2 压气机效率
+          </el-col>
+          <el-col :span="12" class="text-str">
+            G2 压气机效率
+          </el-col>
+        </el-row>
+      </form>
+
+<!--      <div class="text-str">-->
+<!--        <ul>-->
+<!--          <li>G1 压气机效率</li>-->
+<!--          <li>G2 压气机效率</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--        <div class="text-num" style="margin: 50px 0 0 18px;">-->
+<!--          <ul>-->
+<!--            <li>80.00%</li>-->
+<!--            <li>80.00%</li>-->
+<!--          </ul>-->
+<!--        </div>-->
     </div>
   </div>
 </template>
@@ -43,7 +84,7 @@ export default {
 <style lang="scss">
 #centreLeft1 {
   padding: 0.2rem;
-  height: 5.125rem;
+  height: 4.125rem;
   min-width: 6.2rem;
   border-radius: 0.0625rem;
   .bg-color-black {
@@ -101,8 +142,13 @@ export default {
       }
     }
   }
-  .text {
-    color: #c3cbde;
+  .text-str {
+    flex: 1;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    text-align: center;
+    font-size: 0.225rem;
+    color: rgba(255, 255, 255, 0.7);
   }
   .chart-box {
     margin-top: 0.2rem;
@@ -112,7 +158,6 @@ export default {
       padding-top: 0.125rem;
     }
   }
-
   .bottom-data {
     .item-box {
       float: right;

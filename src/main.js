@@ -30,6 +30,10 @@ Vue.prototype.$http = axios
 // 别的组件中 this.$echart
 Vue.prototype.$echarts = window.echarts
 
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+
+Vue.use(ElementUI)
 Vue.config.productionTip = false
 
 new Vue({
