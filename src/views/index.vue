@@ -29,7 +29,7 @@
             <el-row class="content-box">
               <el-col :span="6">
                 <el-row type="flex">
-                  <dv-border-box-10 title="压气机性能">
+                  <dv-border-box-10>
                     <div class="d-flex jc-center" style="transform: translateY(20px)">
                       <h2>压气机性能</h2>
                     </div>
@@ -37,15 +37,15 @@
                   </dv-border-box-10>
                 </el-row>
                 <el-row type="flex">
-                  <dv-border-box-10 title="压气机出口温度传感器 G1 G2">
+                  <dv-border-box-10>
                     <div class="d-flex jc-center" style="transform: translateY(21px)">
                       <h2>压气机出口温度传感器 G1 G2</h2>
                     </div>
-                    <centerLeft1 />
+                    <centerLeft2 />
                   </dv-border-box-10>
                 </el-row>
                 <el-row type="flex">
-                  <dv-border-box-10 title="压气机出口压力传感器 G1 G2">
+                  <dv-border-box-10>
                     <span class="d-flex jc-center" style="transform: translateY(21px)">
                       <h2>压气机出口压力传感器 G1 G2</h2>
                     </span>
@@ -55,7 +55,7 @@
               </el-col>
               <!-- 中间 -->
               <el-col :span="12">
-                <dv-border-box-10 title="燃机效率">
+                <dv-border-box-10>
                   <span class="d-flex jc-center" style="transform: translateY(21px)">
                       <h2>燃机效率</h2>
                     </span>
@@ -65,7 +65,7 @@
               <!-- 右 -->
               <el-col :span="6">
                 <el-row type="flex">
-                  <dv-border-box-10 title="透平性能">
+                  <dv-border-box-10>
                     <span class="d-flex jc-center" style="transform: translateY(21px)">
                       <h2>透平性能</h2>
                     </span>
@@ -73,7 +73,7 @@
                   </dv-border-box-10>
                 </el-row>
                 <el-row type="flex">
-                  <dv-border-box-10 title="透平出口温度传感器">
+                  <dv-border-box-10>
                     <span class="d-flex jc-center" style="transform: translateY(21px)">
                       <h2>透平出口温度传感器</h2>
                     </span>
@@ -81,7 +81,7 @@
                   </dv-border-box-10>
                 </el-row>
                 <el-row type="flex">
-                  <dv-border-box-10 title="透平出口压力传感器">
+                  <dv-border-box-10>
                     <span class="d-flex jc-center" style="transform: translateY(21px)">
                       <h2>透平出口压力传感器</h2>
                     </span>
@@ -99,6 +99,7 @@
 <script>
 import { formatTime } from '@/utils/index.js'
 import centerLeft1 from "./centerLeft1";
+import centerLeft2 from "./centerLeft2";
 export default {
   name: "index",
   data () {
@@ -112,6 +113,7 @@ export default {
   },
   components: {
     centerLeft1,
+    centerLeft2,
   },
   mounted () {
      this.timeFn();

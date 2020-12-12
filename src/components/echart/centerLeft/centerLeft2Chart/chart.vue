@@ -29,46 +29,43 @@ export default {
   watch: {
     cdata: {
       handler (newData) {
-        this.options = {
-          color: [
-            "#37a2da",
-            "#32c5e9",
-            "#9fe6b8",
-            "#ffdb5c",
-            "#ff9f7f",
-            "#fb7293",
-            "#e7bcf3",
-            "#8378ea"
-          ],
+        this.option = {
+          title: {
+            text: '动态数据 + 时间坐标轴'
+          },
           tooltip: {
-            trigger: "item",
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
-          },
-          toolbox: {
-            show: true
-          },
-          calculable: true,
-          legend: {
-            orient: "horizontal",
-            icon: "circle",
-            bottom: 0,
-            x: "center",
-            data: newData.xData,
-            textStyle: {
-              color: "#fff"
+            trigger: 'axis',
+            formatter: function (params) {
+              params = params[0];
+              var date = new Date(params.name);
+              return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+            },
+            axisPointer: {
+              animation: false
             }
           },
-          series: [
-            {
-              name: "通过率统计",
-              type: "pie",
-              radius: [10, 60],
-              roseType: "area",
-              center: ["50%", "40%"],
-              data: newData.seriesData
+          xAxis: {
+            type: 'time',
+            splitLine: {
+              show: false
             }
-          ]
-        }
+          },
+          yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+              show: false
+            }
+          },
+          series: [{
+            name: '模拟数据',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: data,
+            smooth: true
+          }]
+        };
       },
       immediate: true,
       deep: true
