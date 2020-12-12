@@ -12,8 +12,9 @@ export default {
         now: new Date(1997, 9, 3),
         oneDay: 24 * 3600 * 1000,
         initOption: {},
-        G1Values: Math.random() * 1000,
-        G2Values: Math.random() * 1000,
+        G1Values: [],
+        G2Values: [],
+        date: [],
         timerId: null, // 定时器的标识
     }
   },
@@ -27,10 +28,10 @@ export default {
       // 初始化echartInstance对象
       initData() {
           this.chartInstance = this.$echarts.init(this.$refs.L1)
-          for (let i = 0; i < 5; i++) {
-              this.G1data.push(this.updateChart1());
-              this.G2data.push(this.updateChart2());
-          }
+          // for (let i = 0; i < 5; i++) {
+          //     this.G1data.push(this.updateChart1());
+          //     this.G2data.push(this.updateChart2());
+          // }
           // 对图表初始化配置的控制
           this.initOption = {
               legend: {
@@ -45,8 +46,9 @@ export default {
                   }
               },
               xAxis: {
-                  type: 'time',
+                  type: 'category',
                   boundaryGap: false,
+                  data: this.date,	// 绑定实时数据数组
                   splitLine: {
                       show: false
                   }
@@ -64,22 +66,24 @@ export default {
                   {
                       name: 'G1',
                       type: 'line',
-                      data: this.G1data,
+                      data: this.G1Values, // 绑定实时数据数组
                       smooth: true,
                       itemStyle : {
+                          color: '#d95959', //改变折线点的颜色
                           normal: {
-                              lineStyle: {color: '#5ad5e0'},
+                              lineStyle: {color: '#d95959'}, //改变折线的颜色
                           }
                       }
                   },
                   {
                       name: 'G2',
                       type: 'line',
-                      data: this.G2data,
+                      data: this.G2Values, // 绑定实时数据数组
                       smooth: true,
                       itemStyle : {
+                          color: '#8cd5c2', //改变折线点的颜色
                           normal: {
-                              lineStyle: {color: '#d95959'},
+                              lineStyle: {color: '#8cd5c2'}, //改变折线的颜色
                           }
                       }
                   },
@@ -87,45 +91,26 @@ export default {
           };
           this.chartInstance.setOption(this.initOption)
       },
-      // 更新G1实时数据
-      updateChart1: function() {
-          this.now = new Date(+this.now + this.oneDay);
-          this.G1Values = this.G1Values + Math.random() * 21 - 10;
-          return {
-              name: this.now.toString(),
-              value: [
-                  [this.now.getFullYear(), this.now.getMonth() + 1, this.now.getDate()].join('/'),
-                  Math.random(),
-              ]
-          };
-      },
-      // 更新G2实时数据
-      updateChart2: function() {
-          this.G2Values = this.G2Values + Math.random() * 21 - 10;
-          return {
-              name: this.now.toString(),
-              value: [
-                  [this.now.getFullYear(), this.now.getMonth() + 1, this.now.getDate()].join('/'),
-                  Math.random()
-              ]
-          };
-      },
       startInterval () {
           this.timerId = setInterval(() => {
-              this.G1data.shift();
-              this.G1data.push(this.updateChart1());
-              this.G2data.shift();
-              this.G2data.push(this.updateChart1());
-              this.chartInstance.setOption({
-                  series: [
-                    {
-                      data: this.G1data
-                    },
-                    {
-                      data: this.G2data
-                    },
-                  ]
-              });
+              if (this.G1Values.length === 10) {
+                  this.G1Values.shift()
+                  this.G1Values.push(Math.random().toFixed(2))
+                  this.G2Values.shift()
+                  this.G2Values.push(Math.random().toFixed(2))
+                  this.date.shift()
+                  this.date.push(this.getTime(Math.round(new Date().getTime() / 1000)));
+              } else {
+                  const v = Math.random()
+                  this.G1Values.push(v).toFixed(2)
+                  this.G2Values.push(Math.round(v).toFixed(2))
+                  this.date.push(this.getTime(Math.round(new Date().getTime() / 1000)));
+              }
+              // 重新将数组赋值给echarts选项
+              this.initOption.xAxis.data = this.date
+              this.initOption.series[0].data = this.G1Values
+              this.initOption.series[1].data = this.G2Values
+              this.chartInstance.setOption(this.initOption)
           }, 1000)
       },
       // 获取当前时间
