@@ -94,14 +94,14 @@
     }
 
     .body-box {
-      margin-top: 0.8rem;
+      margin-top: 0.25rem;
       display: flex;
       flex-direction: column;
 
       //下方区域的布局
       .content-box {
-        display: grid;
-        grid-template-columns: 2fr 3fr 5fr 3fr 2fr;
+        //display: grid;
+        //grid-template-columns: 2fr 3fr 5fr 3fr 2fr;
       }
 
       // 底部数据

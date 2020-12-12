@@ -4,17 +4,14 @@
       <dv-loading v-if="loading">Loading...</dv-loading>
       <div v-else class="host-body">
         <div class="d-flex jc-center">
-          <dv-decoration-10 style="width:33.3%;height:.0625rem;" />
+          <dv-decoration-10 style="width:33.3%;height:.525rem;" />
           <div class="d-flex jc-center">
-            <dv-decoration-8 :color="['#568aea', '#000000']" style="width:2.5rem;height:.625rem;" />
+            <dv-decoration-8 :color="['#568aea', '#000000']" style="width:2.5rem;height:.525rem;" />
             <div class="title">
-              <span class="title-text">燃气轮机联合循环系统性能变化评估平台</span>
-              <dv-decoration-6
-                  class="title-bototm"
-                  :reverse="true"
-                  :color="['#50e3c2', '#67a1e5']"
-                  style="width:3.125rem;height:.1rem;"
-              />
+              <h1 style="margin: 5px">燃气轮机联合循环系统性能变化评估平台</h1>
+              <div style="transform: translateY(0.68rem)">
+                <span class="title-text2">当前时间：{{dateYear}} {{dateWeek}} {{dateDay}}</span>
+              </div>
             </div>
             <dv-decoration-8
                 :reverse="true"
@@ -27,37 +24,72 @@
         </div>
 
         <div class="body-box">
-          <!-- 第二行数据 -->
-          <div class="content-box">
-            <div>
-              <dv-border-box-11 title="压气机性能">
-                <centerLeft1 />
-              </dv-border-box-11>
-            </div>
-            <!-- 中间 -->
-            <div>
-              <center />
-            </div>
-            <!-- 中间 -->
-            <div>
-              <centerRight2 />
-            </div>
-            <div>
-<!--              <dv-border-box-13>-->
-<!--                <centerRight1 />-->
-<!--              </dv-border-box-13>-->
-            </div>
-          </div>
-
-          <!-- 第四行数据 -->
-          <div class="bototm-box">
-            <dv-border-box-13>
-              <bottomLeft />
-            </dv-border-box-13>
-            <dv-border-box-12>
-              <bottomRight />
-            </dv-border-box-12>
-          </div>
+            <!-- 第二行数据 -->
+            <!-- 左 -->
+            <el-row class="content-box">
+              <el-col :span="6">
+                <el-row type="flex">
+                  <dv-border-box-10 title="压气机性能">
+                    <div class="d-flex jc-center" style="transform: translateY(20px)">
+                      <h2>压气机性能</h2>
+                    </div>
+                    <centerLeft1 />
+                  </dv-border-box-10>
+                </el-row>
+                <el-row type="flex">
+                  <dv-border-box-10 title="压气机出口温度传感器 G1 G2">
+                    <div class="d-flex jc-center" style="transform: translateY(21px)">
+                      <h2>压气机出口温度传感器 G1 G2</h2>
+                    </div>
+                    <centerLeft1 />
+                  </dv-border-box-10>
+                </el-row>
+                <el-row type="flex">
+                  <dv-border-box-10 title="压气机出口压力传感器 G1 G2">
+                    <span class="d-flex jc-center" style="transform: translateY(21px)">
+                      <h2>压气机出口压力传感器 G1 G2</h2>
+                    </span>
+                    <centerLeft1 />
+                  </dv-border-box-10>
+                </el-row>
+              </el-col>
+              <!-- 中间 -->
+              <el-col :span="12">
+                <dv-border-box-10 title="燃机效率">
+                  <span class="d-flex jc-center" style="transform: translateY(21px)">
+                      <h2>燃机效率</h2>
+                    </span>
+                  <centerLeft1 />
+                </dv-border-box-10>
+              </el-col>
+              <!-- 右 -->
+              <el-col :span="6">
+                <el-row type="flex">
+                  <dv-border-box-10 title="透平性能">
+                    <span class="d-flex jc-center" style="transform: translateY(21px)">
+                      <h2>透平性能</h2>
+                    </span>
+                    <centerLeft1 />
+                  </dv-border-box-10>
+                </el-row>
+                <el-row type="flex">
+                  <dv-border-box-10 title="透平出口温度传感器">
+                    <span class="d-flex jc-center" style="transform: translateY(21px)">
+                      <h2>透平出口温度传感器</h2>
+                    </span>
+                    <centerLeft1 />
+                  </dv-border-box-10>
+                </el-row>
+                <el-row type="flex">
+                  <dv-border-box-10 title="透平出口压力传感器">
+                    <span class="d-flex jc-center" style="transform: translateY(21px)">
+                      <h2>透平出口压力传感器</h2>
+                    </span>
+                    <centerLeft1 />
+                  </dv-border-box-10>
+                </el-row>
+              </el-col>
+            </el-row>
         </div>
       </div>
     </dv-full-screen-container>
@@ -82,7 +114,7 @@ export default {
     centerLeft1,
   },
   mounted () {
-    // this.timeFn();
+     this.timeFn();
     this.cancelLoading();
   },
   methods: {

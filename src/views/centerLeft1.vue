@@ -2,8 +2,24 @@
   <div id="centreLeft1">
     <div class="d-flex">
       <form>
+        <el-row type="flex">
+          <el-col :span="24" class="text-num" style="transform: translateY(26px)">
+            <ul>
+              <li>80.00%</li>
+              <li>80.00%</li>
+            </ul>
+          </el-col>
+        </el-row>
+        <el-row type="flex">
+          <el-col :span="12" class="text-str" style="transform: translateY(26px)">
+            G1 压气机效率
+          </el-col>
+          <el-col :span="12" class="text-str" style="transform: translateY(26px)">
+            G1 压气机效率
+          </el-col>
+        </el-row>
         <el-row>
-          <el-col :span="24" class="text-num" style="margin: 50px 0 0 12px;">
+          <el-col :span="24" class="text-num" style="transform: translateY(26px)">
             <ul>
               <li>80.00%</li>
               <li>80.00%</li>
@@ -11,26 +27,10 @@
           </el-col>
         </el-row>
         <el-row>
-          <el-col :span="12" class="text-str">
-            G1 压气机效率
-          </el-col>
-          <el-col :span="12" class="text-str">
-            G1 压气机效率
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="24" class="text-num" style="margin: 5px 0 0 12px;">
-            <ul>
-              <li>80.00%</li>
-              <li>80.00%</li>
-            </ul>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="12" class="text-str">
+          <el-col :span="12" class="text-str" style="transform: translateY(23px)">
             G2 压气机效率
           </el-col>
-          <el-col :span="12" class="text-str">
+          <el-col :span="12" class="text-str" style="transform: translateY(23px)">
             G2 压气机效率
           </el-col>
         </el-row>
@@ -63,20 +63,20 @@ export default {
 
   },
   mounted() {
-    this.changeTiming();
+    // this.changeTiming();
   },
   methods: {
-    changeTiming() {
-      setInterval(() => {
-        this.changeNumber();
-      }, 3000);
-    },
-    changeNumber() {
-      this.numberData.forEach((item, index) => {
-        item.number.number[0] += ++index;
-        item.number = { ...item.number };
-      });
-    }
+    // changeTiming() {
+    //   setInterval(() => {
+    //     this.changeNumber();
+    //   }, 3000);
+    // },
+    // changeNumber() {
+    //   this.numberData.forEach((item, index) => {
+    //     item.number.number[0] += ++index;
+    //     item.number = { ...item.number };
+    //   });
+    // }
   }
 };
 </script>
