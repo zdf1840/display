@@ -34,6 +34,7 @@ export default {
           // }
           // 对图表初始化配置的控制
           this.initOption = {
+              color:['#d95959','#8cd5c2'],
               legend: {
                   bottom: 0,
                   top: 20,
@@ -68,24 +69,12 @@ export default {
                       type: 'line',
                       data: this.G1Values, // 绑定实时数据数组
                       smooth: true,
-                      itemStyle : {
-                          color: '#d95959', //改变折线点的颜色
-                          normal: {
-                              lineStyle: {color: '#d95959'}, //改变折线的颜色
-                          }
-                      }
                   },
                   {
                       name: 'G2',
                       type: 'line',
                       data: this.G2Values, // 绑定实时数据数组
                       smooth: true,
-                      itemStyle : {
-                          color: '#8cd5c2', //改变折线点的颜色
-                          normal: {
-                              lineStyle: {color: '#8cd5c2'}, //改变折线的颜色
-                          }
-                      }
                   },
               ]
           };
@@ -93,19 +82,18 @@ export default {
       },
       startInterval () {
           this.timerId = setInterval(() => {
+              const v = Math.random()
               if (this.G1Values.length === 10) {
                   this.G1Values.shift()
-                  this.G1Values.push(Math.random().toFixed(2))
+                  this.G1Values.push(v.toFixed(2))
                   this.G2Values.shift()
-                  this.G2Values.push(Math.random().toFixed(2))
-                  this.date.shift()
-                  this.date.push(this.getTime(Math.round(new Date().getTime() / 1000)));
-              } else {
-                  const v = Math.random()
-                  this.G1Values.push(v).toFixed(2)
                   this.G2Values.push(Math.round(v).toFixed(2))
-                  this.date.push(this.getTime(Math.round(new Date().getTime() / 1000)));
+                  this.date.shift()
+              } else {
+                  this.G1Values.push(v.toFixed(2))
+                  this.G2Values.push(Math.round(v).toFixed(2))
               }
+              this.date.push(this.getTime(Math.round(new Date().getTime() / 1000)));
               // 重新将数组赋值给echarts选项
               this.initOption.xAxis.data = this.date
               this.initOption.series[0].data = this.G1Values
