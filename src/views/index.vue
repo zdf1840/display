@@ -9,8 +9,8 @@
             <div class="d-flex jc-center">
               <dv-decoration-8 :color="['#568aea', '#000000']" style="width:2.5rem;height:.625rem;" />
               <div class="title">
-                <h1 style="margin: 5px">燃气轮机联合循环系统性能变化评估平台</h1>
-                <div style="transform: translateY(0.6rem)">
+                <h1 style="margin: 6px">燃气轮机联合循环系统性能变化评估平台</h1>
+                <div style="transform: translateY(0.6rem);margin-bottom: 6px">
                   <span class="title-text2">当前时间：{{dateYear}} {{dateWeek}} {{dateDay}}</span>
                 </div>
               </div>

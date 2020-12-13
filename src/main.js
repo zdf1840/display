@@ -21,7 +21,7 @@ import './assets/scss/style.scss'
 
 import axios from 'axios'
 // 请求基准路径的配置
-axios.defaults.baseURL = 'http://127.0.0.1:8002/api/'
+axios.defaults.baseURL = 'http://127.0.0.1:8002/'
 // 将axios挂载到Vue的原型对象上
 // 在别的组件中 this.$http
 Vue.prototype.$http = axios

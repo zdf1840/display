@@ -90,18 +90,30 @@ export default {
       },
       startInterval () {
           this.timerId = setInterval(() => {
-              const v = Math.random()
-              if (this.G1Values.length === 10) {
-                  this.G1Values.shift()
-                  this.G1Values.push(v.toFixed(2))
-                  this.G2Values.shift()
-                  this.G2Values.push(Math.round(v).toFixed(2))
-                  this.date.shift()
-              } else {
-                  this.G1Values.push(v.toFixed(2))
-                  this.G2Values.push(Math.round(v).toFixed(2))
-              }
-              this.date.push(this.getTime(Math.round(new Date().getTime() / 1000)));
+              // const v = Math.random()
+              // if (this.G1Values.length === 10) {
+              //     this.G1Values.shift()
+              //     this.G1Values.push(v.toFixed(2))
+              //     this.G2Values.shift()
+              //     this.G2Values.push(Math.round(v).toFixed(2))
+              //     this.date.shift()
+              // } else {
+              //     this.G1Values.push(v.toFixed(2))
+              //     this.G2Values.push(Math.round(v).toFixed(2))
+              // }
+              this.$http.get('/querystat/chart').then((res) => {
+                  if (this.G1Values.length === 10) {
+                      this.G1Values.shift();
+                      this.G1Values.push(res.data.g1.toFixed(2));
+                      this.G2Values.shift();
+                      this.G2Values.push(res.data.g2.toFixed(2));
+                      this.date.shift();
+                  } else {
+                      this.G1Values.push(res.data.g1.toFixed(2));
+                      this.G2Values.push(res.data.g2.toFixed(2));
+                  }
+              })
+              this.date.push(this.getTime(Math.round(new Date().getTime() / 1000)))
               // 重新将数组赋值给echarts选项
               this.initOption.xAxis.data = this.date
               this.initOption.series[0].data = this.G1Values
