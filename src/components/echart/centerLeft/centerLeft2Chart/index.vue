@@ -28,10 +28,6 @@ export default {
       // 初始化echartInstance对象
       initData() {
           this.chartInstance = this.$echarts.init(this.$refs.L1)
-          // for (let i = 0; i < 5; i++) {
-          //     this.G1data.push(this.updateChart1());
-          //     this.G2data.push(this.updateChart2());
-          // }
           // 对图表初始化配置的控制
           this.initOption = {
               color:['#d95959','#8cd5c2'],
@@ -50,6 +46,12 @@ export default {
                   type: 'category',
                   boundaryGap: false,
                   data: this.date,	// 绑定实时数据数组
+                  //设置轴线的属性
+                  axisLine:{
+                      lineStyle:{
+                          color:'#ffffff',
+                      }
+                  },
                   splitLine: {
                       show: false
                   }
@@ -57,8 +59,14 @@ export default {
               yAxis: {
                   type: 'value',
                   boundaryGap: [0, '100%'],
-                  showSymbol: true,
+                  scale:true, // 按比例显示
                   hoverAnimation: false,
+                  //设置轴线的属性
+                  axisLine:{
+                      lineStyle:{
+                          color:'#ffffff',
+                      }
+                  },
                   splitLine: {
                       show: false
                   }
@@ -78,7 +86,7 @@ export default {
                   },
               ]
           };
-          this.chartInstance.setOption(this.initOption)
+          this.chartInstance.setOption(this.initOption,'light')
       },
       startInterval () {
           this.timerId = setInterval(() => {

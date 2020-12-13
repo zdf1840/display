@@ -1,19 +1,19 @@
 <template>
-    <div id="centreLeft1">
+    <div id="centerLeft1">
         <div class="com-chart">
-            <CentreLeft2Chart />
+            <CenterLeft2Chart />
         </div>
     </div>
 </template>
 
 <script>
-    import CentreLeft2Chart from "@/components/echart/centerLeft/centerLeft2Chart";
+    import CenterLeft2Chart from "@/components/echart/centerLeft/centerLeft2Chart";
     export default {
         data() {
             return {};
         },
         components: {
-            CentreLeft2Chart
+            CenterLeft2Chart
         },
         mounted() {},
         methods: {}
